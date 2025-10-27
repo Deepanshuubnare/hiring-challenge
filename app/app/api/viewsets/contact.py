@@ -16,7 +16,7 @@ class CreateContact(APIView):
     output_serializer_class = output.ContactOutputSerializer
 
     def post(self, request):
-        input_serializer = self.input_serializer_class(data=request.data)
+        input_serializer = self.input_serializer_class(data=request.data, context={'request': request})
         input_serializer.is_valid(raise_exception=True)
         user = request.user
         with transaction.atomic():

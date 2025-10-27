@@ -22,7 +22,4 @@ class LoginUserInputSerializer(serializers.Serializer):
     phone_number = serializers.CharField(required=True, max_length=10, min_length=10)
     password = serializers.CharField(write_only=True, required=True, min_length=5)
     
-    def validate_phone_number(self, value):
-        if not User.objects.filter(phone_number=value).exists():
-            raise serializers.ValidationError("A user with this phone number does not exist.")
-        return value
+   

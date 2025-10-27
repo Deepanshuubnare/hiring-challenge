@@ -55,7 +55,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(seconds=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
     'SLIDING_TOKEN_LIFETIME': timedelta(days=30),
     'SLIDING_TOKEN_REFRESH_LIFETIME_LATE_USER': timedelta(days=1),
@@ -97,16 +97,30 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': env.str('DB_ENGINE'),
+#         'NAME': env.str('DB_NAME'),
+#         'USER': env.str('DB_USER'),
+#         'PASSWORD': env.str('DB_PASSWORD'),
+#         'HOST': env.str('DB_HOST'),
+#         'PORT': env.str('DB_PORT'),
+#         'OPTIONS': {
+#             'sslmode': env.str('DB_SSLMODE'),
+#         }
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': env.str('DB_ENGINE'),
         'NAME': env.str('DB_NAME'),
-        'USER': env.str('DB_USER'),
-        'PASSWORD': env.str('DB_PASSWORD'),
-        'HOST': env.str('DB_HOST'),
-        'PORT': env.str('DB_PORT'),
+        'USER': env.str('DB_USER', default=None),
+        'PASSWORD': env.str('DB_PASSWORD', default=None),
+        'HOST': env.str('DB_HOST', default=None),
+        'PORT': env.str('DB_PORT', default=None),
         'OPTIONS': {
-            'sslmode': env.str('DB_SSLMODE'),
+            # 'sslmode': env.str('DB_SSLMODE', default=None),
         }
     }
 }

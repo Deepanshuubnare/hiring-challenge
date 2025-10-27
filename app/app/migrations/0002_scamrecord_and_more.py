@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated Date')),
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
                 ('phone_number', models.CharField(max_length=10)),
-                ('description', models.CharField()),
+          ('description', models.TextField(null=True, blank=True)),
                 ('created_by', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_scam_records', to=settings.AUTH_USER_MODEL)),
                 ('reported_by', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='scam_records', to=settings.AUTH_USER_MODEL)),
                 ('updated_by', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='updated_scam_records', to=settings.AUTH_USER_MODEL)),
