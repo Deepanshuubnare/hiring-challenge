@@ -45,4 +45,4 @@ The django app will run on http://localhost:8000
 ```shell
 python app/manage.py populate
 ```
-
+This is my SDE intern Assignment submission.
